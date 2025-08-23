@@ -20,7 +20,7 @@
 
 - C#
 - Windows Forms
-- .NET Framework (especifica la versión)
+- .NET Framework 8.0
 
 ---
 
@@ -28,4 +28,4 @@
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/usuario/proyecto.git
+   git clone https://github.com/KenAgudelo/Proyectos_Sistema_facturacion
