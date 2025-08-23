@@ -21,6 +21,8 @@
 - C#
 - Windows Forms
 - .NET Framework 8.0
+- ReaLTaiizor
+- Microsoft Webview2
 
 ---
 
