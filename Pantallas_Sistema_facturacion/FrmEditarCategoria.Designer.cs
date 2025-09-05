@@ -59,7 +59,7 @@
             btnSalir.Customization = "Kioq/zIyMv8yMjL/Kioq/y8vL/8nJyf//v7+/yMjI/8qKir/";
             btnSalir.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalir.Image = null;
-            btnSalir.Location = new Point(237, 214);
+            btnSalir.Location = new Point(237, 294);
             btnSalir.Name = "btnSalir";
             btnSalir.NoRounding = false;
             btnSalir.Size = new Size(171, 50);
@@ -74,7 +74,7 @@
             btnActualizar.Customization = "Kioq/zIyMv8yMjL/Kioq/y8vL/8nJyf//v7+/yMjI/8qKir/";
             btnActualizar.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnActualizar.Image = null;
-            btnActualizar.Location = new Point(42, 214);
+            btnActualizar.Location = new Point(42, 294);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.NoRounding = false;
             btnActualizar.Size = new Size(171, 50);
@@ -93,7 +93,6 @@
             ClientSize = new Size(451, 377);
             Controls.Add(btnSalir);
             Controls.Add(btnActualizar);
-            Controls.Add(txtNombreCategoria);
             Controls.Add(txtID);
             Controls.Add(lblTitulo);
             FormBorderStyle = FormBorderStyle.None;

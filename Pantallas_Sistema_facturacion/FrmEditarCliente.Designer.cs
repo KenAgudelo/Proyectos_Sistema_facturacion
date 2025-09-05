@@ -36,6 +36,7 @@
             txtTelefono = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             btnActualizar = new ReaLTaiizor.Controls.SpaceButton();
             btnSalir = new ReaLTaiizor.Controls.SpaceButton();
+            txtEmail = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             SuspendLayout();
             // 
             // lblTitulo
@@ -231,7 +232,7 @@
             btnActualizar.Customization = "Kioq/zIyMv8yMjL/Kioq/y8vL/8nJyf//v7+/yMjI/8qKir/";
             btnActualizar.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnActualizar.Image = null;
-            btnActualizar.Location = new Point(72, 427);
+            btnActualizar.Location = new Point(72, 520);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.NoRounding = false;
             btnActualizar.Size = new Size(128, 50);
@@ -246,7 +247,7 @@
             btnSalir.Customization = "Kioq/zIyMv8yMjL/Kioq/y8vL/8nJyf//v7+/yMjI/8qKir/";
             btnSalir.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalir.Image = null;
-            btnSalir.Location = new Point(310, 427);
+            btnSalir.Location = new Point(310, 520);
             btnSalir.Name = "btnSalir";
             btnSalir.NoRounding = false;
             btnSalir.Size = new Size(128, 50);
@@ -256,12 +257,55 @@
             btnSalir.Transparent = false;
             btnSalir.Click += btnSalir_Click;
             // 
+            // txtEmail
+            // 
+            txtEmail.AllowPromptAsInput = true;
+            txtEmail.AnimateReadOnly = false;
+            txtEmail.AsciiOnly = false;
+            txtEmail.BackgroundImageLayout = ImageLayout.None;
+            txtEmail.BeepOnError = false;
+            txtEmail.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            txtEmail.Depth = 0;
+            txtEmail.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtEmail.HidePromptOnLeave = false;
+            txtEmail.HideSelection = true;
+            txtEmail.Hint = "Email";
+            txtEmail.InsertKeyMode = InsertKeyMode.Default;
+            txtEmail.LeadingIcon = null;
+            txtEmail.Location = new Point(72, 435);
+            txtEmail.Mask = "";
+            txtEmail.MaxLength = 32767;
+            txtEmail.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            txtEmail.Name = "txtEmail";
+            txtEmail.PasswordChar = '\0';
+            txtEmail.PrefixSuffixText = null;
+            txtEmail.PromptChar = '_';
+            txtEmail.ReadOnly = false;
+            txtEmail.RejectInputOnFirstFailure = false;
+            txtEmail.ResetOnPrompt = true;
+            txtEmail.ResetOnSpace = true;
+            txtEmail.RightToLeft = RightToLeft.No;
+            txtEmail.SelectedText = "";
+            txtEmail.SelectionLength = 0;
+            txtEmail.SelectionStart = 0;
+            txtEmail.ShortcutsEnabled = true;
+            txtEmail.Size = new Size(366, 48);
+            txtEmail.SkipLiterals = true;
+            txtEmail.TabIndex = 8;
+            txtEmail.TabStop = false;
+            txtEmail.TextAlign = HorizontalAlignment.Left;
+            txtEmail.TextMaskFormat = MaskFormat.IncludeLiterals;
+            txtEmail.TrailingIcon = null;
+            txtEmail.UseSystemPasswordChar = false;
+            txtEmail.ValidatingType = null;
+            // 
             // FrmEditarCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
-            ClientSize = new Size(500, 500);
+            ClientSize = new Size(500, 610);
+            Controls.Add(txtEmail);
             Controls.Add(btnSalir);
             Controls.Add(btnActualizar);
             Controls.Add(txtTelefono);
@@ -289,6 +333,6 @@
         private ReaLTaiizor.Controls.MaterialMaskedTextBox txtTelefono;
         private ReaLTaiizor.Controls.SpaceButton btnActualizar;
         private ReaLTaiizor.Controls.SpaceButton btnSalir;
-
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox txtEmail;
     }
 }
