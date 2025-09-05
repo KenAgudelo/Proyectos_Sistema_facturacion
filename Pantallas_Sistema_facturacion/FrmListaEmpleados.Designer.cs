@@ -34,18 +34,6 @@
             txtBuscar = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             btnBuscar = new ReaLTaiizor.Controls.SpaceButton();
             dgEmpleados = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            NOMBRE = new DataGridViewTextBoxColumn();
-            DOCUMENTO = new DataGridViewTextBoxColumn();
-            DIRECCION = new DataGridViewTextBoxColumn();
-            TELEFONO = new DataGridViewTextBoxColumn();
-            EMAIL = new DataGridViewTextBoxColumn();
-            ROL_EMP = new DataGridViewTextBoxColumn();
-            F_INGRESO = new DataGridViewTextBoxColumn();
-            F_RETIRO = new DataGridViewTextBoxColumn();
-            DATOS_AD = new DataGridViewTextBoxColumn();
-            EDITAR = new DataGridViewButtonColumn();
-            BORRAR = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgEmpleados).BeginInit();
             SuspendLayout();
             // 
@@ -153,95 +141,12 @@
             dgEmpleados.AllowUserToDeleteRows = false;
             dgEmpleados.BackgroundColor = Color.Silver;
             dgEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgEmpleados.Columns.AddRange(new DataGridViewColumn[] { ID, NOMBRE, DOCUMENTO, DIRECCION, TELEFONO, EMAIL, ROL_EMP, F_INGRESO, F_RETIRO, DATOS_AD, EDITAR, BORRAR });
             dgEmpleados.Location = new Point(25, 139);
             dgEmpleados.Name = "dgEmpleados";
             dgEmpleados.ReadOnly = true;
             dgEmpleados.Size = new Size(781, 258);
             dgEmpleados.TabIndex = 25;
             dgEmpleados.CellContentClick += dgEmpleados_CellContentClick;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Width = 50;
-            // 
-            // NOMBRE
-            // 
-            NOMBRE.HeaderText = "NOMBRE";
-            NOMBRE.Name = "NOMBRE";
-            NOMBRE.ReadOnly = true;
-            NOMBRE.Width = 150;
-            // 
-            // DOCUMENTO
-            // 
-            DOCUMENTO.HeaderText = "DOCUMENTO";
-            DOCUMENTO.Name = "DOCUMENTO";
-            DOCUMENTO.ReadOnly = true;
-            // 
-            // DIRECCION
-            // 
-            DIRECCION.HeaderText = "DIRECCION";
-            DIRECCION.Name = "DIRECCION";
-            DIRECCION.ReadOnly = true;
-            // 
-            // TELEFONO
-            // 
-            TELEFONO.HeaderText = "TELEFONO";
-            TELEFONO.Name = "TELEFONO";
-            TELEFONO.ReadOnly = true;
-            // 
-            // EMAIL
-            // 
-            EMAIL.HeaderText = "EMAIL";
-            EMAIL.Name = "EMAIL";
-            EMAIL.ReadOnly = true;
-            // 
-            // ROL_EMP
-            // 
-            ROL_EMP.HeaderText = "ROL_EMP";
-            ROL_EMP.Name = "ROL_EMP";
-            ROL_EMP.ReadOnly = true;
-            // 
-            // F_INGRESO
-            // 
-            F_INGRESO.HeaderText = "F_INGRESO";
-            F_INGRESO.Name = "F_INGRESO";
-            F_INGRESO.ReadOnly = true;
-            // 
-            // F_RETIRO
-            // 
-            F_RETIRO.HeaderText = "F_RETIRO";
-            F_RETIRO.Name = "F_RETIRO";
-            F_RETIRO.ReadOnly = true;
-            // 
-            // DATOS_AD
-            // 
-            DATOS_AD.HeaderText = "DATOS_AD";
-            DATOS_AD.Name = "DATOS_AD";
-            DATOS_AD.ReadOnly = true;
-            // 
-            // EDITAR
-            // 
-            EDITAR.HeaderText = "EDITAR";
-            EDITAR.Name = "EDITAR";
-            EDITAR.ReadOnly = true;
-            EDITAR.Resizable = DataGridViewTriState.True;
-            EDITAR.SortMode = DataGridViewColumnSortMode.Automatic;
-            EDITAR.Text = "EDITAR";
-            EDITAR.UseColumnTextForButtonValue = true;
-            // 
-            // BORRAR
-            // 
-            BORRAR.HeaderText = "BORRAR";
-            BORRAR.Name = "BORRAR";
-            BORRAR.ReadOnly = true;
-            BORRAR.Resizable = DataGridViewTriState.True;
-            BORRAR.SortMode = DataGridViewColumnSortMode.Automatic;
-            BORRAR.Text = "BORRAR";
-            BORRAR.UseColumnTextForButtonValue = true;
             // 
             // FrmListaEmpleados
             // 
@@ -272,17 +177,5 @@
         private ReaLTaiizor.Controls.MaterialMaskedTextBox txtBuscar;
         private ReaLTaiizor.Controls.SpaceButton btnBuscar;
         private DataGridView dgEmpleados;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn NOMBRE;
-        private DataGridViewTextBoxColumn DOCUMENTO;
-        private DataGridViewTextBoxColumn DIRECCION;
-        private DataGridViewTextBoxColumn TELEFONO;
-        private DataGridViewTextBoxColumn EMAIL;
-        private DataGridViewTextBoxColumn ROL_EMP;
-        private DataGridViewTextBoxColumn F_INGRESO;
-        private DataGridViewTextBoxColumn F_RETIRO;
-        private DataGridViewTextBoxColumn DATOS_AD;
-        private DataGridViewButtonColumn EDITAR;
-        private DataGridViewButtonColumn BORRAR;
     }
 }

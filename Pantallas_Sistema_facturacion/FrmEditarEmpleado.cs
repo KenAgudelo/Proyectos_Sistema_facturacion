@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,52 +13,165 @@ namespace Pantallas_Sistema_facturacion
 {
     public partial class FrmEditarEmpleado : Form
     {
-        public FrmEditarEmpleado()
+        public FrmEditarEmpleado(int id, string nombre, string documento, string direccion, string telefono, string email, string idRol, DateTime fecha_ingreso, DateTime fecha_retiro, string datos)
         {
             InitializeComponent();
+
+            IdEmpleado = id;
+            txtID.Text = id.ToString();
+            txtNombre.Text = nombre;
+            txtDocumento.Text = documento;
+            txtDireccion.Text = direccion;
+            txtTelefono.Text = telefono;
+            txtEmail.Text = email;
+            txtRol.SelectedValue = Convert.ToInt32(idRol);
+            txtFechaIngreso.Value = fecha_ingreso;
+            txtFechaRetiro.Value = fecha_retiro;
+            txtDetalles.Text = datos;
         }
-        public int IdEmpleado { get; set; }
+
+        public FrmEditarEmpleado(int id)
+        {
+            InitializeComponent();
+            IdEmpleado = id;
+        }
+
+        public int IdEmpleado { get; }
 
         private void FrmEditarEmpleado_Load(object sender, EventArgs e)
         {
-            txtRol.Items.AddRange(new string[] { "user", "admin" });
             if (IdEmpleado == 0)
             {
                 lblTitulo.Text = "INGRESE UN NUEVO PRODUCTO";
                 btnActualizar.Text = "Agregar";
+                txtID.Hide();
             }
             else
             {
+                txtID.Show();
                 lblTitulo.Text = "MODIFICAR PRODUCTO";
-                txtID.Text = IdEmpleado.ToString();
-                txtNombre.Text = "Nombre1";
-                txtDocumento.Text = "0431F";
-                txtDireccion.Text = "Calle donde vive el empleado";
-                txtTelefono.Text = "3245670987";
-                txtEmail.Text = "test@gmail.com";
-                txtRol.Text = "user";
-                txtFechaIngreso.Value = DateTime.Today.AddDays(-7);
-                txtFechaRetiro.Value = DateTime.Today;
-                txtDetalles.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+                txtID.ReadOnly = true;
                 btnActualizar.Text = "Actualizar";
             }
+            Obtener_Roles();
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             if (IdEmpleado == 0)
             {
-                MessageBox.Show("Datos Agregado");
+                using (SqlConnection conn = DB.Connection.GetConnection())
+                {
+                    string query = @"INSERT INTO TBLEMPLEADO
+                                        (
+                                            StrNombre,
+                                            NumDocumento,
+                                            StrDireccion,
+                                            StrTelefono,
+                                            StrEmail,
+                                            IdRolEmpleado,
+                                            DtmIngreso,
+                                            DtmRetiro,
+                                            strDatosAdicionales,
+                                            DtmFechaModifica,
+                                            StrUsuarioModifico
+                                        ) values (
+                                                    @nombre,
+                                                    @doc,
+                                                    @dir,
+                                                    @tel,
+                                                    @email,
+                                                    @rol,
+                                                    @dtmIngreso,
+                                                    @dtmRetiro,
+                                                    @datos,
+                                                    GETDATE(),
+                                                    SYSTEM_USER
+                                                )";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
+                    cmd.Parameters.AddWithValue("@doc", txtDocumento.Text);
+                    cmd.Parameters.AddWithValue("@dir", txtDireccion.Text);
+                    cmd.Parameters.AddWithValue("@tel", txtTelefono.Text);
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@rol", txtRol.SelectedValue);
+                    cmd.Parameters.AddWithValue("@dtmIngreso", txtFechaIngreso.Value);
+                    cmd.Parameters.AddWithValue("@dtmRetiro", txtFechaRetiro.Value);
+                    cmd.Parameters.AddWithValue("@datos", txtDetalles.Text);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Registrado correctamente.", "Éxito",
+                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Datos Actualizados");
+                using (SqlConnection conn = DB.Connection.GetConnection())
+                {
+                    string query = @"UPDATE TBLEMPLEADO
+                                       SET
+                                            StrNombre = @nombre,
+                                            NumDocumento = @doc,
+                                            StrDireccion = @dir,
+                                            StrTelefono = @tel,
+                                            StrEmail = @email,
+                                            IdRolEmpleado = @rol,
+                                            DtmIngreso = @dtmIngreso,
+                                            DtmRetiro = @dtmRetiro,
+                                            strDatosAdicionales = @datos
+                                       WHERE IdEmpleado = @id";
+
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
+                    cmd.Parameters.AddWithValue("@doc", txtDocumento.Text);
+                    cmd.Parameters.AddWithValue("@dir", txtDireccion.Text);
+                    cmd.Parameters.AddWithValue("@tel", txtTelefono.Text);
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@rol", txtRol.SelectedValue);
+                    cmd.Parameters.AddWithValue("@dtmIngreso", txtFechaIngreso.Value);
+                    cmd.Parameters.AddWithValue("@dtmRetiro", txtFechaRetiro.Value);
+                    cmd.Parameters.AddWithValue("@datos", txtDetalles.Text);
+                    cmd.Parameters.AddWithValue("@id", txtID.Text);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Registro actualizado correctamente.", "Éxito",
+                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void Obtener_Roles()
+        {
+            using (SqlConnection conn = DB.Connection.GetConnection())
+            {
+                string query = "SELECT IdRolEmpleado, StrDescripcion FROM TBLROLES";
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                txtRol.DataSource = dt;
+                txtRol.DisplayMember = "StrDescripcion";
+                txtRol.ValueMember = "IdRolEmpleado";
+            }
         }
     }
 }

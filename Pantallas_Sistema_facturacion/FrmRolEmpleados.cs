@@ -41,7 +41,6 @@ namespace Pantallas_Sistema_facturacion
             if (dgRolEmpleados.Columns[e.ColumnIndex].HeaderText == "EDITAR")
             {
                 filaSeleccionada = e.RowIndex;
-                txtNombreRol.Text = dgRolEmpleados.Rows[filaSeleccionada].Cells[1].Value.ToString();
                 txtDetalles.Text = dgRolEmpleados.Rows[filaSeleccionada].Cells[2].Value.ToString();
 
                 modoEdicion = true;
@@ -59,11 +58,10 @@ namespace Pantallas_Sistema_facturacion
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             int contador = 3;
-            if (txtNombreRol.Text != "" && txtDetalles.Text != "")
+            if (txtDetalles.Text != "")
             {
                 if (modoEdicion && filaSeleccionada >= 0)
                 {
-                    dgRolEmpleados.Rows[filaSeleccionada].Cells[1].Value = txtNombreRol.Text;
                     dgRolEmpleados.Rows[filaSeleccionada].Cells[2].Value = txtDetalles.Text;
 
                     modoEdicion = false;
@@ -72,13 +70,13 @@ namespace Pantallas_Sistema_facturacion
                 }
                 else
                 {
-                    dgRolEmpleados.Rows.Add(contador.ToString(), txtNombreRol.Text, txtDetalles.Text);
+                    dgRolEmpleados.Rows.Add(contador.ToString(), txtDetalles.Text);
                     contador++;
                 }
 
-                txtNombreRol.Clear();
+
                 txtDetalles.Clear();
-                txtNombreRol.Focus();
+                txtDetalles.Focus();
             }
             else
             {

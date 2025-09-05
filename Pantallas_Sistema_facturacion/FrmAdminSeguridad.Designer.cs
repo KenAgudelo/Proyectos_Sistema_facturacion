@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgUsuarios = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            EMPLEADO = new DataGridViewTextBoxColumn();
-            USUARIO = new DataGridViewTextBoxColumn();
-            EDITAR = new DataGridViewButtonColumn();
-            BORRAR = new DataGridViewButtonColumn();
             btnSalir = new ReaLTaiizor.Controls.SpaceButton();
             btnAgregar = new ReaLTaiizor.Controls.SpaceButton();
             txtID = new TextBox();
@@ -41,61 +35,14 @@
             txtEmpleado = new ReaLTaiizor.Controls.MaterialComboBox();
             txtClave = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             txtUser = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
+            dgUsuarios = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            EMPLEADO = new DataGridViewTextBoxColumn();
+            USUARIO = new DataGridViewTextBoxColumn();
+            EDITAR = new DataGridViewButtonColumn();
+            BORRAR = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             SuspendLayout();
-            // 
-            // dgUsuarios
-            // 
-            dgUsuarios.AllowUserToAddRows = false;
-            dgUsuarios.AllowUserToDeleteRows = false;
-            dgUsuarios.BackgroundColor = Color.Silver;
-            dgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, EMPLEADO, USUARIO, EDITAR, BORRAR });
-            dgUsuarios.Location = new Point(57, 316);
-            dgUsuarios.Name = "dgUsuarios";
-            dgUsuarios.ReadOnly = true;
-            dgUsuarios.Size = new Size(781, 190);
-            dgUsuarios.TabIndex = 29;
-            dgUsuarios.CellContentClick += dgUsuarios_CellContentClick;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Width = 50;
-            // 
-            // EMPLEADO
-            // 
-            EMPLEADO.HeaderText = "EMPLEADO";
-            EMPLEADO.Name = "EMPLEADO";
-            EMPLEADO.ReadOnly = true;
-            // 
-            // USUARIO
-            // 
-            USUARIO.HeaderText = "USUARIO";
-            USUARIO.Name = "USUARIO";
-            USUARIO.ReadOnly = true;
-            // 
-            // EDITAR
-            // 
-            EDITAR.HeaderText = "EDITAR";
-            EDITAR.Name = "EDITAR";
-            EDITAR.ReadOnly = true;
-            EDITAR.Resizable = DataGridViewTriState.True;
-            EDITAR.SortMode = DataGridViewColumnSortMode.Automatic;
-            EDITAR.Text = "EDITAR";
-            EDITAR.UseColumnTextForButtonValue = true;
-            // 
-            // BORRAR
-            // 
-            BORRAR.HeaderText = "BORRAR";
-            BORRAR.Name = "BORRAR";
-            BORRAR.ReadOnly = true;
-            BORRAR.Resizable = DataGridViewTriState.True;
-            BORRAR.SortMode = DataGridViewColumnSortMode.Automatic;
-            BORRAR.Text = "BORRAR";
-            BORRAR.UseColumnTextForButtonValue = true;
             // 
             // btnSalir
             // 
@@ -254,16 +201,69 @@
             txtUser.UseSystemPasswordChar = false;
             txtUser.ValidatingType = null;
             // 
+            // dgUsuarios
+            // 
+            dgUsuarios.AllowUserToAddRows = false;
+            dgUsuarios.AllowUserToDeleteRows = false;
+            dgUsuarios.BackgroundColor = Color.Silver;
+            dgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, EMPLEADO, USUARIO, EDITAR, BORRAR });
+            dgUsuarios.Location = new Point(57, 316);
+            dgUsuarios.Name = "dgUsuarios";
+            dgUsuarios.ReadOnly = true;
+            dgUsuarios.Size = new Size(781, 190);
+            dgUsuarios.TabIndex = 33;
+            dgUsuarios.CellContentClick += dgUsuarios_CellContentClick;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 50;
+            // 
+            // EMPLEADO
+            // 
+            EMPLEADO.HeaderText = "EMPLEADO";
+            EMPLEADO.Name = "EMPLEADO";
+            EMPLEADO.ReadOnly = true;
+            // 
+            // USUARIO
+            // 
+            USUARIO.HeaderText = "USUARIO";
+            USUARIO.Name = "USUARIO";
+            USUARIO.ReadOnly = true;
+            // 
+            // EDITAR
+            // 
+            EDITAR.HeaderText = "EDITAR";
+            EDITAR.Name = "EDITAR";
+            EDITAR.ReadOnly = true;
+            EDITAR.Resizable = DataGridViewTriState.True;
+            EDITAR.SortMode = DataGridViewColumnSortMode.Automatic;
+            EDITAR.Text = "EDITAR";
+            EDITAR.UseColumnTextForButtonValue = true;
+            // 
+            // BORRAR
+            // 
+            BORRAR.HeaderText = "BORRAR";
+            BORRAR.Name = "BORRAR";
+            BORRAR.ReadOnly = true;
+            BORRAR.Resizable = DataGridViewTriState.True;
+            BORRAR.SortMode = DataGridViewColumnSortMode.Automatic;
+            BORRAR.Text = "BORRAR";
+            BORRAR.UseColumnTextForButtonValue = true;
+            // 
             // FrmAdminSeguridad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(894, 530);
+            Controls.Add(dgUsuarios);
             Controls.Add(txtUser);
             Controls.Add(txtClave);
             Controls.Add(txtEmpleado);
-            Controls.Add(dgUsuarios);
             Controls.Add(btnSalir);
             Controls.Add(btnAgregar);
             Controls.Add(txtID);
@@ -279,8 +279,6 @@
         }
 
         #endregion
-
-        private DataGridView dgUsuarios;
         private ReaLTaiizor.Controls.SpaceButton btnSalir;
         private ReaLTaiizor.Controls.SpaceButton btnAgregar;
         private TextBox txtID;
@@ -288,6 +286,7 @@
         private ReaLTaiizor.Controls.MaterialComboBox txtEmpleado;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox txtClave;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox txtUser;
+        private DataGridView dgUsuarios;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn EMPLEADO;
         private DataGridViewTextBoxColumn USUARIO;

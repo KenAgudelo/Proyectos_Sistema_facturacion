@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,24 +18,13 @@ namespace Pantallas_Sistema_facturacion
             InitializeComponent();
         }
 
-        List<string> empleados = new List<string> { "Juan", "Ana", "Pedro" };
         bool modoEdicion = false;
         int filaSeleccionada = -1;
 
         private void FrmAdminSeguridad_Load(object sender, EventArgs e)
         {
-            txtEmpleado.DataSource = empleados;
-
-            dgUsuarios.Rows.Add(
-                   1,
-                   $"Juan",
-                   "Lorem ipsum"
-                   );
-            dgUsuarios.Rows.Add(
-                    2,
-                    $"Ana",
-                    "Lorem"
-                    );
+            CargarEmpleados();
+            CargarUsuarios();
         }
 
         private void dgUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -44,53 +34,132 @@ namespace Pantallas_Sistema_facturacion
             if (dgUsuarios.Columns[e.ColumnIndex].HeaderText == "EDITAR")
             {
                 filaSeleccionada = e.RowIndex;
+
                 txtEmpleado.Text = dgUsuarios.Rows[filaSeleccionada].Cells[1].Value.ToString();
                 txtUser.Text = dgUsuarios.Rows[filaSeleccionada].Cells[2].Value.ToString();
+
+                string idSeguridad = dgUsuarios.Rows[filaSeleccionada].Cells[0].Value.ToString();
+                using (SqlConnection conn = DB.Connection.GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT StrClave FROM TBLSEGURIDAD WHERE IdSeguridad=@Id";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Id", idSeguridad);
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        txtClave.Text = result.ToString();
+                    }
+                }
 
                 modoEdicion = true;
                 btnAgregar.Text = "Guardar Cambios";
             }
             else if (dgUsuarios.Columns[e.ColumnIndex].HeaderText == "BORRAR")
             {
-                if (MessageBox.Show("¿Seguro que deseas borrar este rol?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("¿Seguro que deseas borrar este usuario?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    dgUsuarios.Rows.RemoveAt(e.RowIndex);
+                    string idSeguridad = dgUsuarios.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                    using (SqlConnection conn = DB.Connection.GetConnection())
+                    {
+                        conn.Open();
+                        string query = "DELETE FROM TBLSEGURIDAD WHERE IdSeguridad=@Id";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@Id", idSeguridad);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    CargarUsuarios();
                 }
             }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            int contador = 3;
-            if (txtEmpleado.Text != "" && txtUser.Text != "")
+            if (txtEmpleado.SelectedValue == null || string.IsNullOrWhiteSpace(txtUser.Text) || string.IsNullOrWhiteSpace(txtClave.Text))
             {
+                MessageBox.Show("Por favor completa todos los campos.");
+                return;
+            }
+
+            using (SqlConnection conn = DB.Connection.GetConnection())
+            {
+                conn.Open();
+
                 if (modoEdicion && filaSeleccionada >= 0)
                 {
-                    dgUsuarios.Rows[filaSeleccionada].Cells[1].Value = txtEmpleado.Text;
-                    dgUsuarios.Rows[filaSeleccionada].Cells[2].Value = txtUser.Text;
+                    string idSeguridad = dgUsuarios.Rows[filaSeleccionada].Cells[0].Value.ToString();
+                    string queryUpdate = "UPDATE TBLSEGURIDAD SET IdEmpleado=@IdEmpleado, StrUsuario=@Usuario, StrClave=@Clave WHERE IdSeguridad=@Id";
+                    SqlCommand cmd = new SqlCommand(queryUpdate, conn);
+                    cmd.Parameters.AddWithValue("@IdEmpleado", txtEmpleado.SelectedValue);
+                    cmd.Parameters.AddWithValue("@Usuario", txtUser.Text);
+                    cmd.Parameters.AddWithValue("@Clave", txtClave.Text);
+                    cmd.Parameters.AddWithValue("@Id", idSeguridad);
+                    cmd.ExecuteNonQuery();
 
                     modoEdicion = false;
-                    filaSeleccionada = -1;
                     btnAgregar.Text = "Agregar";
                 }
                 else
                 {
-                    dgUsuarios.Rows.Add(contador.ToString(), txtEmpleado.Text, txtUser.Text);
-                    contador++;
+                    string queryInsert = "INSERT INTO TBLSEGURIDAD (IdEmpleado, StrUsuario, StrClave) VALUES (@IdEmpleado, @Usuario, @Clave)";
+                    SqlCommand cmd = new SqlCommand(queryInsert, conn);
+                    cmd.Parameters.AddWithValue("@IdEmpleado", txtEmpleado.SelectedValue);
+                    cmd.Parameters.AddWithValue("@Usuario", txtUser.Text);
+                    cmd.Parameters.AddWithValue("@Clave", txtClave.Text);
+                    cmd.ExecuteNonQuery();
                 }
+            }
 
-                txtUser.Clear();
-                txtEmpleado.Focus();
-            }
-            else
-            {
-                MessageBox.Show("Por favor completa todos los campos.");
-            }
+            txtUser.Clear();
+            txtClave.Clear();
+            CargarUsuarios();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CargarEmpleados()
+        {
+            using (SqlConnection conn = DB.Connection.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT IdEmpleado, StrNombre FROM TBLEMPLEADO";
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                txtEmpleado.DataSource = dt;
+                txtEmpleado.DisplayMember = "StrNombre";
+                txtEmpleado.ValueMember = "IdEmpleado";
+            }
+        }
+
+        private void CargarUsuarios()
+        {
+            dgUsuarios.Rows.Clear();
+
+            using (SqlConnection conn = DB.Connection.GetConnection())
+            {
+                conn.Open();
+                string query = @"SELECT S.IdSeguridad, E.StrNombre, S.StrUsuario
+                         FROM TBLSEGURIDAD S
+                         INNER JOIN TBLEMPLEADO E ON S.IdEmpleado = E.IdEmpleado";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    dgUsuarios.Rows.Add(
+                        dr["IdSeguridad"].ToString(),
+                        dr["StrNombre"].ToString(),
+                        dr["StrUsuario"].ToString()
+                    );
+                }
+            }
         }
     }
 }

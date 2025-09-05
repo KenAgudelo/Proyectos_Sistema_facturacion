@@ -51,7 +51,7 @@
             // 
             // txtID
             // 
-            txtID.BackColor = Color.FromArgb(224, 224, 224);
+            txtID.BackColor = SystemColors.ScrollBar;
             txtID.BorderStyle = BorderStyle.None;
             txtID.Location = new Point(72, 75);
             txtID.Name = "txtID";

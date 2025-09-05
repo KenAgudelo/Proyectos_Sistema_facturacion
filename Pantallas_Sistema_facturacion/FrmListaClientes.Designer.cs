@@ -34,12 +34,6 @@
             btnSalir = new ReaLTaiizor.Controls.SpaceButton();
             foxLabel1 = new ReaLTaiizor.Controls.FoxLabel();
             dgClientes = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            CLIENTE = new DataGridViewTextBoxColumn();
-            DOCUMENTO = new DataGridViewTextBoxColumn();
-            TELEFONO = new DataGridViewTextBoxColumn();
-            EDITAR = new DataGridViewButtonColumn();
-            BORRAR = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgClientes).BeginInit();
             SuspendLayout();
             // 
@@ -105,7 +99,7 @@
             btnNuevo.Customization = "Kioq/zIyMv8yMjL/Kioq/y8vL/8nJyf//v7+/yMjI/8qKir/";
             btnNuevo.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnNuevo.Image = null;
-            btnNuevo.Location = new Point(636, 110);
+            btnNuevo.Location = new Point(863, 110);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.NoRounding = false;
             btnNuevo.Size = new Size(126, 48);
@@ -120,7 +114,7 @@
             btnSalir.Customization = "Kioq/zIyMv8yMjL/Kioq/y8vL/8nJyf//v7+/yMjI/8qKir/";
             btnSalir.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalir.Image = null;
-            btnSalir.Location = new Point(636, 376);
+            btnSalir.Location = new Point(863, 482);
             btnSalir.Name = "btnSalir";
             btnSalir.NoRounding = false;
             btnSalir.Size = new Size(126, 48);
@@ -147,66 +141,19 @@
             dgClientes.AllowUserToDeleteRows = false;
             dgClientes.BackgroundColor = Color.Silver;
             dgClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgClientes.Columns.AddRange(new DataGridViewColumn[] { ID, CLIENTE, DOCUMENTO, TELEFONO, EDITAR, BORRAR });
             dgClientes.Location = new Point(54, 164);
             dgClientes.Name = "dgClientes";
             dgClientes.ReadOnly = true;
-            dgClientes.Size = new Size(708, 206);
+            dgClientes.Size = new Size(935, 312);
             dgClientes.TabIndex = 7;
             dgClientes.CellContentClick += dgClientes_CellContentClick;
             // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Width = 80;
-            // 
-            // CLIENTE
-            // 
-            CLIENTE.HeaderText = "CLIENTE";
-            CLIENTE.Name = "CLIENTE";
-            CLIENTE.ReadOnly = true;
-            CLIENTE.Width = 150;
-            // 
-            // DOCUMENTO
-            // 
-            DOCUMENTO.HeaderText = "DOCUMENTO";
-            DOCUMENTO.Name = "DOCUMENTO";
-            DOCUMENTO.ReadOnly = true;
-            // 
-            // TELEFONO
-            // 
-            TELEFONO.HeaderText = "TELEFONO";
-            TELEFONO.Name = "TELEFONO";
-            TELEFONO.ReadOnly = true;
-            // 
-            // EDITAR
-            // 
-            EDITAR.HeaderText = "EDITAR";
-            EDITAR.Name = "EDITAR";
-            EDITAR.ReadOnly = true;
-            EDITAR.Resizable = DataGridViewTriState.True;
-            EDITAR.SortMode = DataGridViewColumnSortMode.Automatic;
-            EDITAR.Text = "EDITAR";
-            EDITAR.UseColumnTextForButtonValue = true;
-            // 
-            // BORRAR
-            // 
-            BORRAR.HeaderText = "BORRAR";
-            BORRAR.Name = "BORRAR";
-            BORRAR.ReadOnly = true;
-            BORRAR.Resizable = DataGridViewTriState.True;
-            BORRAR.SortMode = DataGridViewColumnSortMode.Automatic;
-            BORRAR.Text = "BORRAR";
-            BORRAR.UseColumnTextForButtonValue = true;
-            // 
-            // frmListaClientes
+            // FrmListaClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1011, 558);
             Controls.Add(dgClientes);
             Controls.Add(foxLabel1);
             Controls.Add(btnSalir);
@@ -214,7 +161,7 @@
             Controls.Add(btnBuscar);
             Controls.Add(txtBuscar);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "frmListaClientes";
+            Name = "FrmListaClientes";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmListaClientes";
             Load += FrmListaClientes_Load;
@@ -229,11 +176,5 @@
         private ReaLTaiizor.Controls.SpaceButton btnSalir;
         private ReaLTaiizor.Controls.FoxLabel foxLabel1;
         private DataGridView dgClientes;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn CLIENTE;
-        private DataGridViewTextBoxColumn DOCUMENTO;
-        private DataGridViewTextBoxColumn TELEFONO;
-        private DataGridViewButtonColumn EDITAR;
-        private DataGridViewButtonColumn BORRAR;
     }
 }

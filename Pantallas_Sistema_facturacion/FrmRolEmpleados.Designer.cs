@@ -30,7 +30,6 @@
         {
             btnSalir = new ReaLTaiizor.Controls.SpaceButton();
             btnAgregar = new ReaLTaiizor.Controls.SpaceButton();
-            txtNombreRol = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             txtID = new TextBox();
             lblTitulo = new ReaLTaiizor.Controls.FoxLabel();
             txtDetalles = new ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit();
@@ -73,48 +72,6 @@
             btnAgregar.Transparent = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
-            // txtNombreRol
-            // 
-            txtNombreRol.AllowPromptAsInput = true;
-            txtNombreRol.AnimateReadOnly = false;
-            txtNombreRol.AsciiOnly = false;
-            txtNombreRol.BackgroundImageLayout = ImageLayout.None;
-            txtNombreRol.BeepOnError = false;
-            txtNombreRol.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
-            txtNombreRol.Depth = 0;
-            txtNombreRol.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtNombreRol.HidePromptOnLeave = false;
-            txtNombreRol.HideSelection = true;
-            txtNombreRol.Hint = "Nombre Rol";
-            txtNombreRol.InsertKeyMode = InsertKeyMode.Default;
-            txtNombreRol.LeadingIcon = null;
-            txtNombreRol.Location = new Point(71, 112);
-            txtNombreRol.Mask = "";
-            txtNombreRol.MaxLength = 32767;
-            txtNombreRol.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            txtNombreRol.Name = "txtNombreRol";
-            txtNombreRol.PasswordChar = '\0';
-            txtNombreRol.PrefixSuffixText = null;
-            txtNombreRol.PromptChar = '_';
-            txtNombreRol.ReadOnly = false;
-            txtNombreRol.RejectInputOnFirstFailure = false;
-            txtNombreRol.ResetOnPrompt = true;
-            txtNombreRol.ResetOnSpace = true;
-            txtNombreRol.RightToLeft = RightToLeft.No;
-            txtNombreRol.SelectedText = "";
-            txtNombreRol.SelectionLength = 0;
-            txtNombreRol.SelectionStart = 0;
-            txtNombreRol.ShortcutsEnabled = true;
-            txtNombreRol.Size = new Size(781, 48);
-            txtNombreRol.SkipLiterals = true;
-            txtNombreRol.TabIndex = 18;
-            txtNombreRol.TabStop = false;
-            txtNombreRol.TextAlign = HorizontalAlignment.Left;
-            txtNombreRol.TextMaskFormat = MaskFormat.IncludeLiterals;
-            txtNombreRol.TrailingIcon = null;
-            txtNombreRol.UseSystemPasswordChar = false;
-            txtNombreRol.ValidatingType = null;
-            // 
             // txtID
             // 
             txtID.BackColor = Color.FromArgb(224, 224, 224);
@@ -143,7 +100,7 @@
             txtDetalles.Depth = 0;
             txtDetalles.HideSelection = true;
             txtDetalles.Hint = "Detalles";
-            txtDetalles.Location = new Point(71, 166);
+            txtDetalles.Location = new Point(71, 112);
             txtDetalles.MaxLength = 32767;
             txtDetalles.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             txtDetalles.Name = "txtDetalles";
@@ -154,7 +111,7 @@
             txtDetalles.SelectionLength = 0;
             txtDetalles.SelectionStart = 0;
             txtDetalles.ShortcutsEnabled = true;
-            txtDetalles.Size = new Size(781, 147);
+            txtDetalles.Size = new Size(781, 201);
             txtDetalles.TabIndex = 21;
             txtDetalles.TabStop = false;
             txtDetalles.TextAlign = HorizontalAlignment.Left;
@@ -223,7 +180,6 @@
             Controls.Add(txtDetalles);
             Controls.Add(btnSalir);
             Controls.Add(btnAgregar);
-            Controls.Add(txtNombreRol);
             Controls.Add(txtID);
             Controls.Add(lblTitulo);
             FormBorderStyle = FormBorderStyle.None;
@@ -240,7 +196,6 @@
 
         private ReaLTaiizor.Controls.SpaceButton btnSalir;
         private ReaLTaiizor.Controls.SpaceButton btnAgregar;
-        private ReaLTaiizor.Controls.MaterialMaskedTextBox txtNombreRol;
         private TextBox txtID;
         private ReaLTaiizor.Controls.FoxLabel lblTitulo;
         private ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit txtDetalles;

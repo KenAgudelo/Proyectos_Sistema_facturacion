@@ -29,17 +29,6 @@
         private void InitializeComponent()
         {
             dgProductos = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            NOMBRE = new DataGridViewTextBoxColumn();
-            REFERENCIA = new DataGridViewTextBoxColumn();
-            PRECIO_VENTA = new DataGridViewTextBoxColumn();
-            PRECIO_COMPRA = new DataGridViewTextBoxColumn();
-            STOCK = new DataGridViewTextBoxColumn();
-            CATEGORIA = new DataGridViewTextBoxColumn();
-            IMAGEN = new DataGridViewTextBoxColumn();
-            DETALLES = new DataGridViewTextBoxColumn();
-            EDITAR = new DataGridViewButtonColumn();
-            BORRAR = new DataGridViewButtonColumn();
             foxLabel1 = new ReaLTaiizor.Controls.FoxLabel();
             btnSalir = new ReaLTaiizor.Controls.SpaceButton();
             btnNuevo = new ReaLTaiizor.Controls.SpaceButton();
@@ -54,93 +43,12 @@
             dgProductos.AllowUserToDeleteRows = false;
             dgProductos.BackgroundColor = Color.Silver;
             dgProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgProductos.Columns.AddRange(new DataGridViewColumn[] { ID, NOMBRE, REFERENCIA, PRECIO_VENTA, PRECIO_COMPRA, STOCK, CATEGORIA, IMAGEN, DETALLES, EDITAR, BORRAR });
             dgProductos.Location = new Point(46, 152);
             dgProductos.Name = "dgProductos";
             dgProductos.ReadOnly = true;
             dgProductos.Size = new Size(781, 258);
             dgProductos.TabIndex = 13;
             dgProductos.CellContentClick += dgProductos_CellContentClick;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Width = 50;
-            // 
-            // NOMBRE
-            // 
-            NOMBRE.HeaderText = "NOMBRE";
-            NOMBRE.Name = "NOMBRE";
-            NOMBRE.ReadOnly = true;
-            NOMBRE.Width = 150;
-            // 
-            // REFERENCIA
-            // 
-            REFERENCIA.HeaderText = "REFERENCIA";
-            REFERENCIA.Name = "REFERENCIA";
-            REFERENCIA.ReadOnly = true;
-            // 
-            // PRECIO_VENTA
-            // 
-            PRECIO_VENTA.HeaderText = "PRECIO_VENTA";
-            PRECIO_VENTA.Name = "PRECIO_VENTA";
-            PRECIO_VENTA.ReadOnly = true;
-            PRECIO_VENTA.Width = 130;
-            // 
-            // PRECIO_COMPRA
-            // 
-            PRECIO_COMPRA.HeaderText = "PRECIO_COMPRA";
-            PRECIO_COMPRA.Name = "PRECIO_COMPRA";
-            PRECIO_COMPRA.ReadOnly = true;
-            PRECIO_COMPRA.Width = 130;
-            // 
-            // STOCK
-            // 
-            STOCK.HeaderText = "STOCK";
-            STOCK.Name = "STOCK";
-            STOCK.ReadOnly = true;
-            STOCK.Width = 70;
-            // 
-            // CATEGORIA
-            // 
-            CATEGORIA.HeaderText = "CATEGORIA";
-            CATEGORIA.Name = "CATEGORIA";
-            CATEGORIA.ReadOnly = true;
-            // 
-            // IMAGEN
-            // 
-            IMAGEN.HeaderText = "IMAGEN";
-            IMAGEN.Name = "IMAGEN";
-            IMAGEN.ReadOnly = true;
-            IMAGEN.Width = 80;
-            // 
-            // DETALLES
-            // 
-            DETALLES.HeaderText = "DETALLES";
-            DETALLES.Name = "DETALLES";
-            DETALLES.ReadOnly = true;
-            // 
-            // EDITAR
-            // 
-            EDITAR.HeaderText = "EDITAR";
-            EDITAR.Name = "EDITAR";
-            EDITAR.ReadOnly = true;
-            EDITAR.Resizable = DataGridViewTriState.True;
-            EDITAR.SortMode = DataGridViewColumnSortMode.Automatic;
-            EDITAR.Text = "EDITAR";
-            EDITAR.UseColumnTextForButtonValue = true;
-            // 
-            // BORRAR
-            // 
-            BORRAR.HeaderText = "BORRAR";
-            BORRAR.Name = "BORRAR";
-            BORRAR.ReadOnly = true;
-            BORRAR.Resizable = DataGridViewTriState.True;
-            BORRAR.SortMode = DataGridViewColumnSortMode.Automatic;
-            BORRAR.Text = "BORRAR";
-            BORRAR.UseColumnTextForButtonValue = true;
             // 
             // foxLabel1
             // 
@@ -268,16 +176,5 @@
         private ReaLTaiizor.Controls.SpaceButton btnNuevo;
         private ReaLTaiizor.Controls.SpaceButton btnBuscar;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox txtBuscar;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn NOMBRE;
-        private DataGridViewTextBoxColumn REFERENCIA;
-        private DataGridViewTextBoxColumn PRECIO_VENTA;
-        private DataGridViewTextBoxColumn PRECIO_COMPRA;
-        private DataGridViewTextBoxColumn STOCK;
-        private DataGridViewTextBoxColumn CATEGORIA;
-        private DataGridViewTextBoxColumn IMAGEN;
-        private DataGridViewTextBoxColumn DETALLES;
-        private DataGridViewButtonColumn EDITAR;
-        private DataGridViewButtonColumn BORRAR;
     }
 }
